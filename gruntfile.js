@@ -35,7 +35,7 @@ module.exports = function (grunt) {
       },
       serverJS: {
         files: _.union(defaultAssets.server.gruntConfig, defaultAssets.server.allJS),
-        tasks: ['eslint'],
+        tasks: [],
         options: {
           livereload: true
         }
@@ -48,7 +48,7 @@ module.exports = function (grunt) {
       },
       clientJS: {
         files: defaultAssets.client.js,
-        tasks: ['eslint'],
+        tasks: [],
         options: {
           livereload: true
         }
@@ -314,7 +314,7 @@ module.exports = function (grunt) {
   });
 
   // Lint CSS and JavaScript files.
-  grunt.registerTask('lint', ['sass', 'less', 'eslint', 'csslint']);
+  grunt.registerTask('lint', ['sass', 'less', 'csslint']);
 
   grunt.registerMultiTask('wiredep', 'Inject Bower dependencies.', function () {
     this.requiresConfig(['wiredep', this.target, 'src']);

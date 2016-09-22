@@ -13,7 +13,7 @@ var config = require('../config'),
   MongoStore = require('connect-mongo')(session);
 
 // Define the Socket.io configuration method
-module.exports = function (app, db) {
+module.exports = function (app) {
   var server;
   if (config.secure && config.secure.ssl === true) {
     // Load SSL key and certificate
@@ -69,11 +69,11 @@ module.exports = function (app, db) {
   // Create a new Socket.io server
   var io = socketio.listen(server);
 
-  // Create a MongoDB storage object
-  var mongoStore = new MongoStore({
-    mongooseConnection: db.connection,
-    collection: config.sessionCollection
-  });
+  // // Create a MongoDB storage object
+  // var mongoStore = new MongoStore({
+  //   mongooseConnection: db.connection,
+  //   collection: config.sessionCollection
+  // });
 
   // Intercept Socket.io's handshake request
   io.use(function (socket, next) {
